@@ -1,7 +1,7 @@
-ARG NODE_IMAGE=node:20.14.0-bookworm-slim
+ARG NODE_IMAGE=node:slim
 
 FROM $NODE_IMAGE AS base
-RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends curl dumb-init
+RUN apk add g++ make py3-pip
 RUN mkdir -p /home/node/app && chown node:node /home/node/app
 WORKDIR /home/node/app
 USER node
@@ -22,6 +22,7 @@ RUN npm ci --omit=dev
 COPY --chown=node:node --from=build /home/node/app/build .
 
 COPY --chown=node:node entrypoint.sh /home/node/app
+
 RUN chmod +x /home/node/app/entrypoint.sh
 
 ENTRYPOINT ["/home/node/app/entrypoint.sh"]
