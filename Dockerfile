@@ -1,5 +1,6 @@
 FROM node:20.12.2-alpine3.18 AS base
-
+# Global deps
+RUN apk add g++ make py3-pip
 # All deps stage
 FROM base AS deps
 WORKDIR /app
