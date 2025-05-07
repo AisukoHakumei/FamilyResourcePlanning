@@ -1,4 +1,4 @@
-ARG NODE_IMAGE=node:slim
+ARG NODE_IMAGE=node:20.12.2-alpine3.18
 
 FROM $NODE_IMAGE AS base
 RUN apk add g++ make py3-pip
