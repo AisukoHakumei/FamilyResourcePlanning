@@ -1,10 +1,33 @@
-* {
-  margin: 0;
-  padding: 0;
-}
+@import "tailwindcss";
+@source "../resources/views";
 
-html,
-body {
-  height: 100%;
-  width: 100%;
+@theme {
+
+    --sand-1: #fdfdfc;
+    --sand-2: #f9f9f8;
+    --sand-3: #f1f0ef;
+    --sand-4: #e9e8e6;
+    --sand-5: #e2e1de;
+    --sand-6: #dad9d6;
+    --sand-7: #cfceca;
+    --sand-8: #bcbbb5;
+    --sand-9: #8d8d86;
+    --sand-10: #82827c;
+    --sand-11: #63635e;
+    --sand-12: #21201c;
+
+    --font-sans: Instrument Sans, sans-serif;
+    --color-primary: #5A45FF;
+    --color-sand-1: var(--sand-1);
+    --color-sand-2: var(--sand-2);
+    --color-sand-3: var(--sand-3);
+    --color-sand-4: var(--sand-4);
+    --color-sand-5: var(--sand-5);
+    --color-sand-6: var(--sand-6);
+    --color-sand-7: var(--sand-7);
+    --color-sand-8: var(--sand-8);
+    --color-sand-9: var(--sand-9);
+    --color-sand-10: var(--sand-10);
+    --color-sand-11: var(--sand-11);
+    --color-sand-12: var(--sand-12);
 }
