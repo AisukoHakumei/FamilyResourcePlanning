@@ -5,8 +5,8 @@ export const description = 'A left and right sidebar.'
 
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3'
-import SidebarLeft from '~/components/SidebarLeft.vue'
-import SidebarRight from '~/components/SidebarRight.vue'
+import SidebarLeft from '~/components/layouts/SidebarLeft.vue'
+import SidebarRight from '~/components/layouts/SidebarRight.vue'
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -19,6 +19,11 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from '~/components/ui/sidebar'
+import { useColorMode } from '@vueuse/core'
+
+const mode = useColorMode({
+  disableTransition: false
+})
 </script>
 
 <template>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Calendars from '~/components/Calendars.vue'
+import Calendars from '~/components/layouts/Calendars.vue'
 
-import DatePicker from '~/components/DatePicker.vue'
-import NavUser from '~/components/NavUser.vue'
+import DatePicker from '~/components/layouts/DatePicker.vue'
+import NavUser from '~/components/layouts/NavUser.vue'
 import {
   Sidebar,
   SidebarContent,
@@ -45,10 +45,7 @@ const data = {
 </script>
 
 <template>
-  <Sidebar
-    class="sticky hidden lg:flex top-0 h-svh border-l"
-    v-bind="props"
-  >
+  <Sidebar class="sticky hidden lg:flex top-0 h-svh border-l" v-bind="props">
     <SidebarHeader class="h-16 border-b border-sidebar-border">
       <NavUser :user="data.user" />
     </SidebarHeader>

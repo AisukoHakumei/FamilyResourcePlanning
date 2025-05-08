@@ -33,7 +33,7 @@ defineProps<{
 
 <template>
   <SidebarGroup>
-    <SidebarGroupLabel>Workspaces</SidebarGroupLabel>
+    <SidebarGroupLabel>Favorite Holiday Plans</SidebarGroupLabel>
     <SidebarGroupContent>
       <SidebarMenu>
         <Collapsible v-for="workspace in workspaces" :key="workspace.name">

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { LucideIcon } from 'lucide-vue-next'
 
+import { Badge } from '~/components/ui/badge'
 import {
   SidebarMenu,
   SidebarMenuButton,
@@ -13,6 +14,7 @@ defineProps<{
     url: string
     icon: LucideIcon
     isActive?: boolean
+    badge?: string
   }[]
 }>()
 </script>
@@ -24,6 +26,7 @@ defineProps<{
         <a :href="item.url">
           <component :is="item.icon" />
           <span>{{ item.title }}</span>
+          <Badge v-if="item?.badge === '' || item?.badge !== undefined">{{ item?.badge }}</Badge>
         </a>
       </SidebarMenuButton>
     </SidebarMenuItem>

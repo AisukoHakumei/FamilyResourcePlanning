@@ -1,63 +1,38 @@
 <script setup lang="ts">
-import NavFavorites from '~/components/NavFavorites.vue'
+import NavFavoriteProjects from '~/components/layouts/NavFavoriteProjects.vue'
 
-import NavMain from '~/components/NavMain.vue'
-import NavSecondary from '~/components/NavSecondary.vue'
-import NavWorkspaces from '~/components/NavWorkspaces.vue'
-import TeamSwitcher from '~/components/TeamSwitcher.vue'
+import NavMain from '~/components/layouts/NavMain.vue'
+import NavSecondary from '~/components/layouts/NavSecondary.vue'
+import NavFavoriteHolidayPlans   from '~/components/layouts/NavFavoriteHolidayPlans.vue'
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
   type SidebarProps,
   SidebarRail,
 } from '~/components/ui/sidebar'
 import {
-  AudioWaveform,
   Blocks,
   Calendar,
   Command,
+  HandCoins,
   Home,
-  Inbox,
+  ListTodo,
   MessageCircleQuestion,
-  Search,
   Settings2,
-  Sparkles,
+  SquareChartGantt,
   Trash2,
+  TreePalm
 } from 'lucide-vue-next'
 
 const props = defineProps<SidebarProps>()
 
 // This is sample data.
 const data = {
-  teams: [
-    {
-      name: 'Acme Inc',
-      logo: Command,
-      plan: 'Enterprise',
-    },
-    {
-      name: 'Acme Corp.',
-      logo: AudioWaveform,
-      plan: 'Startup',
-    },
-    {
-      name: 'Evil Corp.',
-      logo: Command,
-      plan: 'Free',
-    },
-  ],
-  navMain: [
-    {
-      title: 'Search',
-      url: '#',
-      icon: Search,
-    },
-    {
-      title: 'Ask AI',
-      url: '#',
-      icon: Sparkles,
-    },
+  navMain: [   
     {
       title: 'Home',
       url: '#',
@@ -65,9 +40,24 @@ const data = {
       isActive: true,
     },
     {
-      title: 'Inbox',
+      title: 'Budget Planning',
       url: '#',
-      icon: Inbox,
+      icon: HandCoins,
+    },
+    {
+      title: 'Projects',
+      url: '#',
+      icon: SquareChartGantt,
+    },
+    {
+      title: 'Holiday Planning',
+      url: '#',
+      icon: TreePalm,
+    },
+    {
+      title: 'Tasks & Chores',
+      url: '#',
+      icon: ListTodo,
       badge: '10',
     },
   ],
@@ -108,47 +98,7 @@ const data = {
       name: 'Family Recipe Collection & Meal Planning',
       url: '#',
       emoji: '🍳',
-    },
-    {
-      name: 'Fitness Tracker & Workout Routines',
-      url: '#',
-      emoji: '💪',
-    },
-    {
-      name: 'Book Notes & Reading List',
-      url: '#',
-      emoji: '📚',
-    },
-    {
-      name: 'Sustainable Gardening Tips & Plant Care',
-      url: '#',
-      emoji: '🌱',
-    },
-    {
-      name: 'Language Learning Progress & Resources',
-      url: '#',
-      emoji: '🗣️',
-    },
-    {
-      name: 'Home Renovation Ideas & Budget Tracker',
-      url: '#',
-      emoji: '🏠',
-    },
-    {
-      name: 'Personal Finance & Investment Portfolio',
-      url: '#',
-      emoji: '💰',
-    },
-    {
-      name: 'Movie & TV Show Watchlist with Reviews',
-      url: '#',
-      emoji: '🎬',
-    },
-    {
-      name: 'Daily Habit Tracker & Goal Setting',
-      url: '#',
-      emoji: '✅',
-    },
+    }
   ],
   workspaces: [
     {
@@ -263,12 +213,21 @@ const data = {
 <template>
   <Sidebar class="border-r-0" v-bind="props">
     <SidebarHeader>
-      <TeamSwitcher :teams="data.teams" />
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <SidebarMenuButton class="w-fit px-1.5">
+            <div class="flex aspect-square size-5 items-center justify-center rounded-md bg-sidebar-primary text-sidebar-primary-foreground">
+              <Command class="size-3" />
+            </div>
+            <span class="truncate font-semibold">Family Resource Planner</span>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      </SidebarMenu>
       <NavMain :items="data.navMain" />
     </SidebarHeader>
     <SidebarContent>
-      <NavFavorites :favorites="data.favorites" />
-      <NavWorkspaces :workspaces="data.workspaces" />
+      <NavFavoriteProjects :favorites="data.favorites" />
+      <NavFavoriteHolidayPlans :workspaces="data.workspaces" />
       <NavSecondary :items="data.navSecondary" class="mt-auto" />
     </SidebarContent>
     <SidebarRail />
