@@ -1,25 +1,26 @@
-# Dependencies and AdonisJS build
 node_modules
-build
-tmp
 
-# Secrets
-.env
-.env.local
-.env.production.local
-.env.development.local
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
 
-# Frontend assets compiled code
-public/assets
-
-# Build tools specific
-npm-debug.log
-yarn-error.log
-
-# Editors specific
-.fleet
-.idea
-.vscode
-
-# Platform specific
+# OS
 .DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# SQLite
+*.db
