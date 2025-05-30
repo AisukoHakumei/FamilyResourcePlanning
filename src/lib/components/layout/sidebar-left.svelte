@@ -10,10 +10,10 @@
 	import Trash2 from "@lucide/svelte/icons/trash-2";
 	import ListTodo from "@lucide/svelte/icons/list-todo";
 
-	import NavFavorites from "$lib/components/nav-favorites.svelte";
-	import NavMain from "$lib/components/nav-main.svelte";
-	import NavSecondary from "$lib/components/nav-secondary.svelte";
-	import AppName from "$lib/components/app-name.svelte";
+	import NavFavorites from "$lib/components/layout/nav-favorites.svelte";
+	import NavMain from "$lib/components/layout/nav-main.svelte";
+	import NavSecondary from "$lib/components/layout/nav-secondary.svelte";
+	import AppName from "$lib/components/layout/app-name.svelte";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import type { ComponentProps } from "svelte";
 
