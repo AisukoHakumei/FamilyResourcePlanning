@@ -70,6 +70,7 @@
 		"better-sqlite3": "^11.8.0",
 		"d3-scale": "^4.0.2",
 		"d3-shape": "^3.2.0",
-		"drizzle-orm": "^0.38.4"
+		"drizzle-orm": "^0.38.4",
+		"drizzle-seed": "^0.3.1"
 	}
 }

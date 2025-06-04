@@ -1,5 +1,9 @@
-import type { Handle } from '@sveltejs/kit';
+import type { Handle, ServerInit } from '@sveltejs/kit';
 import * as auth from '$lib/server/auth.js';
+
+export const init: ServerInit = async () => {
+	console.log("Server ready...")
+}
 
 const handleAuth: Handle = async ({ event, resolve }) => {
 	const sessionToken = event.cookies.get(auth.sessionCookieName);
