@@ -28,7 +28,7 @@
 			},
 			{
 				title: "Budget Planning",
-				url: "#",
+				url: "/budget",
 				icon: HandCoins,
 			},
 			{
