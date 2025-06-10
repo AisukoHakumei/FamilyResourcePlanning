@@ -1,10 +1,8 @@
 import { hash, verify } from '@node-rs/argon2';
 import { encodeBase32LowerCase } from '@oslojs/encoding';
 import { fail, redirect } from '@sveltejs/kit';
-import { eq } from 'drizzle-orm';
 import * as auth from '$lib/server/auth';
-import { db } from '$lib/server/db';
-import * as table from '$lib/server/db/schema/user';
+import * as userRepository from '$lib/server/db/repositories/users';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
@@ -27,10 +25,7 @@ export const actions: Actions = {
 			return fail(400, { message: 'Invalid password (min 6, max 255 characters)' });
 		}
 
-		const results = await db
-			.select()
-			.from(table.user)
-			.where(eq(table.user.username, username));
+		const results = await userRepository.getUserByUsername(username);
 
 		const existingUser = results.at(0);
 		if (!existingUser) {
@@ -62,7 +57,7 @@ export const actions: Actions = {
 			return fail(400, { message: 'Invalid username' });
 		}
 		if (!validatePassword(password)) {
-			return fail(400, { message: 'Invalid password' });
+			return fail(400, { message: 'Invalid password (min 6, max 255 characters)' });
 		}
 
 		const userId = generateUserId();
@@ -75,7 +70,9 @@ export const actions: Actions = {
 		});
 
 		try {
-			await db.insert(table.user).values({ id: userId, username, passwordHash, familyId: "test" });
+			await userRepository.registerUser(
+				{ id: userId, username, passwordHash, familyId: "test" }
+			);
 
 			const sessionToken = auth.generateSessionToken();
 			const session = await auth.createSession(sessionToken, userId);
