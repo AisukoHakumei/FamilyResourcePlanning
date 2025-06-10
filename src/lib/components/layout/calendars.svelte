@@ -1,7 +1,7 @@
 <script lang="ts">
 	import * as Collapsible from "$lib/components/ui/collapsible/index.js";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-	import Check from "@lucide/svelte/icons/check";
+	import { Checkbox } from "$lib/components/ui/checkbox/index.js";
 	import ChevronRight from "@lucide/svelte/icons/chevron-right";
 
 	let { calendars }: { calendars: { name: string; items: string[] }[] } = $props();
@@ -32,7 +32,7 @@
 										data-active={index < 2}
 										class="group/calendar-item border-sidebar-border text-sidebar-primary-foreground data-[active=true]:border-sidebar-primary data-[active=true]:bg-sidebar-primary flex aspect-square size-4 shrink-0 items-center justify-center rounded-sm border"
 									>
-										<Check
+										<Checkbox
 											class="hidden size-3 group-data-[active=true]/calendar-item:block"
 										/>
 									</div>
