@@ -23,12 +23,7 @@ export const budgetLine = sqliteTable('budget_line', {
 
     createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
     createdBy: text('created_by').notNull().references(() => user.id),
-    budgetId: text('budget_id')
+    budgetId: text('budget_id').notNull().references(() => budget.id)
 });
 
-export const budgetLineRelations = relations(budgetLine, ({ one }) => ({
-    budget: one(budget, {
-        fields: [budgetLine.budgetId],
-        references: [budget.id]
-    })
-}));
+export type BudgetLine = typeof budgetLine.$inferSelect

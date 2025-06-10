@@ -1,7 +1,7 @@
 export { budget } from "./budget";
 export { budgetLine } from "./budget"
 export { budgetRelations } from "./budget";
-export { budgetLineRelations } from "./budget"
+export type {BudgetLine} from "./budget";
 
 export { user } from "./user"
 export { userRelations } from "./user"
