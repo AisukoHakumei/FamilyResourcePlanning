@@ -36,6 +36,12 @@
 				isActive: currentPage === "/budget"
 			},
 			{
+				title: "Furnitures & appliances",
+				url: "#",
+				icon: Blocks,
+				isActive: currentPage === "/"
+			},
+			{
 				title: "Projects",
 				url: "#",
 				icon: SquareChartGantt,
