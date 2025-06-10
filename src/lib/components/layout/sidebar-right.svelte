@@ -32,12 +32,7 @@
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 </script>
 
-<Sidebar.Root
-	bind:ref
-	collapsible="none"
-	class="sticky top-0 hidden h-svh border-l lg:flex"
-	{...restProps}
->
+<Sidebar.Root bind:ref collapsible="none" class="sticky top-0 hidden h-svh border-l lg:flex" {...restProps}>
 	<Sidebar.Header class="border-sidebar-border h-16 border-b">
 		<NavUser user={data.user} />
 	</Sidebar.Header>

@@ -8,7 +8,7 @@
 	import StarOff from "@lucide/svelte/icons/star-off";
 	import Trash2 from "@lucide/svelte/icons/trash-2";
 
-	let { favoriteTypeName, favorites }: { favoriteTypeName: string, favorites: { name: string; url: string; emoji: string }[] } = $props();
+	let { favoriteTypeName, favorites }: { favoriteTypeName: string; favorites: { name: string; url: string; emoji: string }[] } = $props();
 
 	const sidebar = useSidebar();
 </script>
@@ -35,11 +35,7 @@
 							</Sidebar.MenuAction>
 						{/snippet}
 					</DropdownMenu.Trigger>
-					<DropdownMenu.Content
-						class="w-56 rounded-lg"
-						side={sidebar.isMobile ? "bottom" : "right"}
-						align={sidebar.isMobile ? "end" : "start"}
-					>
+					<DropdownMenu.Content class="w-56 rounded-lg" side={sidebar.isMobile ? "bottom" : "right"} align={sidebar.isMobile ? "end" : "start"}>
 						<DropdownMenu.Item>
 							<StarOff class="text-muted-foreground" />
 							<span>Remove from Favorites</span>

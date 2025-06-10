@@ -9,7 +9,7 @@ export const load: PageServerLoad = async (event) => {
     }
 
     const budgets = db.select().from(budget)
-    return { 
+    return {
         user: event.locals.user,
         budgets: budgets
     };

@@ -3,8 +3,8 @@
     import DollarSign from "@lucide/svelte/icons/dollar-sign";
     import Users from "@lucide/svelte/icons/users";
     import CreditCard from "@lucide/svelte/icons/credit-card";
-    import { Badge } from "$lib/components/ui/badge/index.js";
-    import * as Card from "$lib/components/ui/card/index.js";
+    import { Badge } from "$lib/components/ui/badge";
+    import * as Card from "$lib/components/ui/card";
     import Breadcrumb from "$lib/components/layout/breadcrumb.svelte";
     import { enhance } from "$app/forms";
     import type { PageServerData } from "./$types";

@@ -10,15 +10,11 @@
 {#each calendars as calendar, index (calendar.name)}
 	<Sidebar.Group class="py-0">
 		<Collapsible.Root open={index === 0} class="group/collapsible">
-			<Sidebar.GroupLabel
-				class="group/label text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full text-sm"
-			>
+			<Sidebar.GroupLabel class="group/label text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full text-sm">
 				{#snippet child({ props })}
 					<Collapsible.Trigger {...props}>
 						{calendar.name}
-						<ChevronRight
-							class="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90"
-						/>
+						<ChevronRight class="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
 					</Collapsible.Trigger>
 				{/snippet}
 			</Sidebar.GroupLabel>
@@ -28,13 +24,8 @@
 						{#each calendar.items as item, index (item)}
 							<Sidebar.MenuItem>
 								<Sidebar.MenuButton>
-									<div
-										data-active={index < 2}
-										class="group/calendar-item border-sidebar-border text-sidebar-primary-foreground data-[active=true]:border-sidebar-primary data-[active=true]:bg-sidebar-primary flex aspect-square size-4 shrink-0 items-center justify-center rounded-sm border"
-									>
-										<Checkbox
-											class="hidden size-3 group-data-[active=true]/calendar-item:block"
-										/>
+									<div data-active={index < 2} class="group/calendar-item border-sidebar-border text-sidebar-primary-foreground data-[active=true]:border-sidebar-primary data-[active=true]:bg-sidebar-primary flex aspect-square size-4 shrink-0 items-center justify-center rounded-sm border">
+										<Checkbox class="hidden size-3 group-data-[active=true]/calendar-item:block" />
 									</div>
 									{item}
 								</Sidebar.MenuButton>

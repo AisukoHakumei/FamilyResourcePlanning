@@ -8,9 +8,7 @@
 		<Sidebar.MenuButton size="lg">
 			{#snippet child({ props })}
 				<a href="##" {...props}>
-					<div
-						class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
-					>
+					<div class="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
 						<Command class="size-4" />
 					</div>
 					<div class="grid flex-1 text-left text-sm leading-tight">

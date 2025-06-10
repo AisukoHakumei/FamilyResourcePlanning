@@ -10,6 +10,6 @@ export const load: PageServerLoad = async ({ params }) => {
 		budget: await db.query.budget.findFirst({
 			where: eq(budget.id, params.id)
 		}),
-        budgetLines: await db.select().from(budgetLine).where(eq(budgetLine.budgetId, params.id))
+		budgetLines: await db.select().from(budgetLine).where(eq(budgetLine.budgetId, params.id))
 	};
 };

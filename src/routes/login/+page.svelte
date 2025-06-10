@@ -14,8 +14,8 @@
         <Card.Header>
             <Card.Title class="text-2xl">Login</Card.Title>
             <Card.Description>
-                Enter your email below to login to your account <br>
-                <span style='color: red'>{form?.message ?? ''}</span>
+                Enter your email below to login to your account <br />
+                <span style="color: red">{form?.message ?? ""}</span>
             </Card.Description>
         </Card.Header>
         <Card.Content>
@@ -33,7 +33,7 @@
                         <Input id="password" name="password" type="password" required />
                     </div>
                     <Button type="submit" class="w-full">Login</Button>
-                    <Button type="submit" variant="outline" class="w-full" formaction='?/register'>Register</Button>
+                    <Button type="submit" variant="outline" class="w-full" formaction="?/register">Register</Button>
                 </div>
             </form>
         </Card.Content>

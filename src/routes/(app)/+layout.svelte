@@ -1,7 +1,7 @@
 <script lang="ts">
 	import SidebarLeft from "$lib/components/layout/sidebar-left.svelte";
 	import SidebarRight from "$lib/components/layout/sidebar-right.svelte";
-	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+	import * as Sidebar from "$lib/components/ui/sidebar";
 
     let { children } = $props();
 </script>

@@ -3,8 +3,7 @@
 
 	// The `any` should be `Component` after @lucide/svelte updates types
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	let { items }: { items: { title: string; url: string; icon: any; isActive?: boolean }[] } =
-		$props();
+	let { items }: { items: { title: string; url: string; icon: any; isActive?: boolean }[] } = $props();
 </script>
 
 <Sidebar.Menu>

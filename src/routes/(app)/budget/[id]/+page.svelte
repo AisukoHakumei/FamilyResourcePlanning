@@ -7,7 +7,7 @@
 
     let { data }: PageProps = $props();
 
-    const path = "Budget / " + data.budget?.name
+    const path = "Budget / " + data.budget?.name;
 </script>
 
 <Breadcrumb {path} />
