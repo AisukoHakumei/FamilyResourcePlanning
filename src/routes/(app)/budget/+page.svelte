@@ -5,7 +5,6 @@
     import { columns } from "./columns";
 
     let { data }: { data: PageServerData } = $props();
-    console.log(data.budgetTable)
 
 </script>
 <Breadcrumb path="Budget" />

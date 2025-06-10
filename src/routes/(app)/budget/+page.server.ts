@@ -29,7 +29,7 @@ async function createBudgetTable(): Promise<BudgetTable[]> {
 
     for (const row of budgetsWithLines) {
         const budgetId = row.budgetId;
-        
+
         if (!budgetMap.has(budgetId)) {
             budgetMap.set(budgetId, {
                 id: budgetId,
@@ -41,12 +41,12 @@ async function createBudgetTable(): Promise<BudgetTable[]> {
         }
 
         const budgetData = budgetMap.get(budgetId)!;
-        
+
         // Add amounts if budget line exists (leftJoin might return null values)
         if (row.allocatedAmount !== null) {
             budgetData.totalAllocated += row.allocatedAmount;
             budgetData.totalUsed += row.usedAmount || 0;
-            
+
             if (row.closed) {
                 budgetData.hasClosedLines = true;
             }
@@ -56,7 +56,7 @@ async function createBudgetTable(): Promise<BudgetTable[]> {
     // Convert to BudgetTable format
     return Array.from(budgetMap.values()).map(budgetData => {
         const remainingAmount = budgetData.totalAllocated - budgetData.totalUsed;
-        
+
         let status: BudgetTable['status'];
         if (budgetData.hasClosedLines) {
             status = 'closed';
@@ -83,15 +83,7 @@ export const load: PageServerLoad = async (event) => {
     }
 
     const budgets = await db.select().from(budget)
-    const budgetTable = await db
-        .select({
-            id: budget.id,
-            name: budget.name,
-            totalAmount: sum(budgetLine.allocatedAmount)
-        })
-        .from(budget)
-        .leftJoin(budgetLine, eq(budget.id, budgetLine.budgetId))
-        .groupBy(budget.id, budget.name);
+
     return {
         user: event.locals.user,
         budgets: budgets,
