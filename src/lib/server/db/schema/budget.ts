@@ -26,4 +26,5 @@ export const budgetLine = sqliteTable('budget_line', {
     budgetId: text('budget_id').notNull().references(() => budget.id)
 });
 
+export type Budget = typeof budget.$inferSelect
 export type BudgetLine = typeof budgetLine.$inferSelect

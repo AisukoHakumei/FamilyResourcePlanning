@@ -1,5 +1,5 @@
 import * as auth from '$lib/server/auth';
-import { error, fail, redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
 export const prerender = false;
