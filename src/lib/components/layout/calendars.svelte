@@ -24,7 +24,11 @@
 						{#each calendar.items as item, index (item)}
 							<Sidebar.MenuItem>
 								<Sidebar.MenuButton>
-									<Checkbox />
+									<div data-active={index < 2} class="group/calendar-item border-sidebar-border text-sidebar-primary-foreground flex aspect-square size-4 shrink-0 items-center justify-center rounded-sm border">
+										<Checkbox
+											checked={index < 2}
+										/>
+									</div>
 									{item}
 								</Sidebar.MenuButton>
 							</Sidebar.MenuItem>

@@ -8,6 +8,7 @@
 
 <Sidebar.Menu>
 	{#each items as item (item.title)}
+
 		<Sidebar.MenuItem>
 			<Sidebar.MenuButton isActive={item.isActive}>
 				{#snippet child({ props })}

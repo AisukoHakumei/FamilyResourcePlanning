@@ -1,5 +1,3 @@
-import { reset, seed } from "drizzle-seed";
-import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 import { db } from "..";
 import * as userSchema from "../schema/user";
 import * as familySchema from "../schema/family"
@@ -10,6 +8,13 @@ export async function mainSeed() {
     await db.insert(familySchema.family).values({
         id: "test",
         name: "DEV",
+    });
+
+    await db.insert(userSchema.user).values({
+        id: "m747iuirivj3v34y4thrrjrm",
+        username: "test",
+        passwordHash: "$argon2id$v=19$m=19456,t=2,p=1$E+v+yWQjwFFf3nYoA4dYIQ$6X0+jvaQio6TcKLaeKfbNgcRldHRlqtL6zQKQ/8+SZA",
+        familyId: "test",
     });
 
     await db.insert(userSchema.user).values({

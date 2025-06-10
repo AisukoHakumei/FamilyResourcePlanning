@@ -16,36 +16,43 @@
 	import AppName from "$lib/components/layout/app-name.svelte";
 	import * as Sidebar from "$lib/components/ui/sidebar/index.js";
 	import type { ComponentProps } from "svelte";
+	import { page } from "$app/state";
 
 	// This is sample data.
-	const data = {
+	const currentPage = $derived(page.url.pathname);
+
+	const data = $derived({
 		navMain: [
 			{
 				title: "Home",
-				url: "#",
+				url: "/",
 				icon: Home,
-				isActive: true,
+				isActive: currentPage === "/"
 			},
 			{
 				title: "Budget Planning",
 				url: "/budget",
 				icon: HandCoins,
+				isActive: currentPage === "/budget"
 			},
 			{
 				title: "Projects",
 				url: "#",
 				icon: SquareChartGantt,
+				isActive: currentPage === "/"
 			},
 			{
 				title: "Holiday Planning",
 				url: "#",
 				icon: TreePalm,
+				isActive: currentPage === "/"
 			},
 			{
 				title: "Tasks & Chores",
 				url: "#",
 				icon: ListTodo,
 				badge: "10",
+				isActive: currentPage === "/"
 			},
 		],
 		navSecondary: [
@@ -53,6 +60,7 @@
 				title: "Calendar",
 				url: "#",
 				icon: Calendar,
+				isActive: currentPage === "/"
 			},
 			{
 				title: "Settings",
@@ -109,7 +117,7 @@
 				emoji: "🇫🇷",
 			},
 		],
-	};
+	});
 
 	let { ref = $bindable(null), ...restProps }: ComponentProps<typeof Sidebar.Root> = $props();
 </script>
