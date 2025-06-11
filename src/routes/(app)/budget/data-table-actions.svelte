@@ -56,6 +56,6 @@
         <DropdownMenu.Item onSelect={handleView}><Eye />View</DropdownMenu.Item>
         <DropdownMenu.Item><Pencil />Edit</DropdownMenu.Item>
         <DropdownMenu.Separator />
-        <DropdownMenu.Item onSelect={() => showDeleteModal = true}><Trash />Delete</DropdownMenu.Item>
+        <DropdownMenu.Item onSelect={() => showDeleteModal = true} class="text-destructive"><Trash />Delete</DropdownMenu.Item>
     </DropdownMenu.Content>
 </DropdownMenu.Root>
