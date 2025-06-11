@@ -2,7 +2,7 @@ import { hash, verify } from '@node-rs/argon2';
 import { encodeBase32LowerCase } from '@oslojs/encoding';
 import { fail, redirect } from '@sveltejs/kit';
 import * as auth from '$lib/server/auth';
-import * as userRepository from '$lib/server/db/repositories/users';
+import * as UserRepository from '$lib/server/db/repositories/users';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
@@ -25,7 +25,7 @@ export const actions: Actions = {
 			return fail(400, { message: 'Invalid password (min 6, max 255 characters)' });
 		}
 
-		const results = await userRepository.getUserByUsername(username);
+		const results = await UserRepository.getUserByUsername(username);
 
 		const existingUser = results.at(0);
 		if (!existingUser) {
@@ -70,7 +70,7 @@ export const actions: Actions = {
 		});
 
 		try {
-			await userRepository.registerUser(
+			await UserRepository.registerUser(
 				{ id: userId, username, passwordHash, familyId: "test" }
 			);
 

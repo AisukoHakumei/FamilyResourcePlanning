@@ -1,10 +1,10 @@
-import * as budgetRepository from '$lib/server/db/repositories/budget';
+import * as BudgetRepository from '$lib/server/db/repositories/budget';
 import type { PageServerLoad } from './$types';
 
 
 export const load: PageServerLoad = async ({ params }) => {
 	return {
-		budget: await budgetRepository.getBudgetById(params.id),
-		budgetLines: await budgetRepository.getBudgetLinesByBudgetId(params.id)
+		budget: await BudgetRepository.getBudgetById(params.id),
+		budgetLines: await BudgetRepository.getBudgetLinesByBudgetId(params.id)
 	};
 };

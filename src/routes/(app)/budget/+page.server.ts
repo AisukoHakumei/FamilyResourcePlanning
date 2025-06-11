@@ -1,8 +1,9 @@
 import { redirect } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad, Actions } from './$types';
 import { db } from '$lib/server/db';
 import { budget, budgetLine } from '$lib/server/db/schema';
 import { sum, eq } from 'drizzle-orm';
+import * as BudgetRepository from '$lib/server/db/repositories/budget';
 import type { BudgetTable } from './columns';
 
 async function createBudgetTable(): Promise<BudgetTable[]> {
@@ -91,3 +92,17 @@ export const load: PageServerLoad = async (event) => {
         budgetLines: await db.select().from(budgetLine)
     };
 };
+
+export const actions = {
+    deleteBudget: async ({locals, url}) => {
+        if (!locals.user) {
+            error(401);
+        }
+
+        const id = url.searchParams.get('id');
+        await BudgetRepository.deleteBudgetById(id);
+        console.log(`deleteBudget action called`, id);
+
+        redirect(303, '/budget');
+    }
+} satisfies Actions;
