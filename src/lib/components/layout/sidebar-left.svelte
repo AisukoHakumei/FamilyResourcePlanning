@@ -33,7 +33,7 @@
 				title: "Budget Planning",
 				url: "/budget",
 				icon: HandCoins,
-				isActive: currentPage === "/budget"
+				isActive: currentPage.startsWith("/budget")
 			},
 			{
 				title: "Furnitures & appliances",
