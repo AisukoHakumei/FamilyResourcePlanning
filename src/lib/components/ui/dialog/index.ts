@@ -6,6 +6,7 @@ import Header from "./dialog-header.svelte";
 import Overlay from "./dialog-overlay.svelte";
 import Content from "./dialog-content.svelte";
 import Description from "./dialog-description.svelte";
+import type { ComponentProps } from "svelte";
 
 const Root = DialogPrimitive.Root;
 const Trigger = DialogPrimitive.Trigger;
@@ -35,3 +36,6 @@ export {
 	Description as DialogDescription,
 	Close as DialogClose,
 };
+
+export type RootProps = ComponentProps<typeof DialogPrimitive.Root>;
+export type ContentProps = ComponentProps<typeof Content>;

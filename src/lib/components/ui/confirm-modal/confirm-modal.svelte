@@ -1,15 +1,19 @@
 <script lang="ts">
     import * as Dialog from "$lib/components/ui/dialog";
     import { Button } from "$lib/components/ui/button";
+    import type { Snippet } from "svelte";
+    import type { WithoutChild } from "$lib/utils";
 
     type Props = Dialog.RootProps & {
         title: Snippet;
         description: Snippet;
         contentProps?: WithoutChild<Dialog.ContentProps>;
         cancelButtonText?: string;
-        confirmButtonText?: Snippet;
+        confirmButton: Snippet<[string]>;
+        confirmButtonText: string;
         onConfirm?: () => void;
         onCancel?: () => void;
+        isOpen?: boolean;
     };
     let {
         isOpen = $bindable(false),
