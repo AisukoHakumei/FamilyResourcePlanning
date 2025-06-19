@@ -3,11 +3,11 @@
     import Eye from "@lucide/svelte/icons/eye";
     import Pencil from "@lucide/svelte/icons/pencil";
     import Trash from "@lucide/svelte/icons/trash";
-    import { Button } from "$lib/components/ui/button/index.ts";
-    import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.ts";
+    import { Button } from "$lib/components/ui/button";
+    import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
     import ConfirmModal from "$lib/components/ui/confirm-modal/confirm-modal.svelte";
     import { goto } from "$app/navigation";
-    import { enhance } from '$app/forms';
+    import { enhance } from "$app/forms";
 
     let { id }: { id: string } = $props();
     let showDeleteModal = $state(false);
@@ -16,21 +16,16 @@
         // Handle view action
         goto(`/budget/${id}`);
     };
-
 </script>
 
-<ConfirmModal
-        bind:isOpen={showDeleteModal}
-        confirmButtonText="Delete"
-        onCancel={() => showDeleteModal = false}
->
+<ConfirmModal bind:isOpen={showDeleteModal} confirmButtonText="Delete" onCancel={() => (showDeleteModal = false)}>
     {#snippet title()}
         Delete Budget
     {/snippet}
     {#snippet description()}
         Are you sure you want to delete this budget? This action cannot be undone.
     {/snippet}
-    {#snippet confirmButton(confirmButtonText)}
+    {#snippet confirmButton(confirmButtonText: string)}
         <form use:enhance method="post" action="?/deleteBudget&id={id}">
             <Button type="submit" variant="destructive">{confirmButtonText}</Button>
         </form>
@@ -40,12 +35,7 @@
 <DropdownMenu.Root>
     <DropdownMenu.Trigger>
         {#snippet child({ props })}
-            <Button
-                    {...props}
-                    variant="ghost"
-                    size="icon"
-                    class="relative size-8 p-0"
-            >
+            <Button {...props} variant="ghost" size="icon" class="relative size-8 p-0">
                 <span class="sr-only">Open menu</span>
                 <EllipsisIcon />
             </Button>
@@ -56,6 +46,6 @@
         <DropdownMenu.Item onSelect={handleView}><Eye />View</DropdownMenu.Item>
         <DropdownMenu.Item><Pencil />Edit</DropdownMenu.Item>
         <DropdownMenu.Separator />
-        <DropdownMenu.Item onSelect={() => showDeleteModal = true} class="text-destructive"><Trash />Delete</DropdownMenu.Item>
+        <DropdownMenu.Item onSelect={() => (showDeleteModal = true)} class="text-destructive"><Trash />Delete</DropdownMenu.Item>
     </DropdownMenu.Content>
 </DropdownMenu.Root>
