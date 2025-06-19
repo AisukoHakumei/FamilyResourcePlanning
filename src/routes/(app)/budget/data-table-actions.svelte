@@ -18,7 +18,7 @@
     };
 </script>
 
-<ConfirmModal bind:isOpen={showDeleteModal} confirmButtonText="Delete" onCancel={() => (showDeleteModal = false)}>
+<ConfirmModal bind:isOpen={showDeleteModal} confirmButtonText="Delete" onConfirm={() => (showDeleteModal = false)} onCancel={() => (showDeleteModal = false)}>
     {#snippet title()}
         Delete Budget
     {/snippet}
