@@ -1,10 +1,11 @@
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad, Actions } from './$types';
 import { db } from '$lib/server/db';
 import { budget, budgetLine } from '$lib/server/db/schema';
 import { sum, eq } from 'drizzle-orm';
 import * as BudgetRepository from '$lib/server/db/repositories/budget';
 import type { BudgetTable } from './columns';
+import logger from '$lib/logger';
 
 async function createBudgetTable(): Promise<BudgetTable[]> {
     // Get all budgets with their related budget lines
@@ -99,9 +100,9 @@ export const actions = {
             error(401);
         }
 
-        const id = url.searchParams.get('id');
+        const id = url.searchParams.get('id') as string;
         await BudgetRepository.deleteBudgetById(id);
-        console.log(`deleteBudget action called`, id);
+        logger.info('Deleted budget id: ', id)
 
         redirect(303, '/budget');
     }
